@@ -5,7 +5,18 @@ root = tk.Tk()
 con_var = tk.IntVar()
 
 def convert():
-    result_l.config(text = f"{box.get()}")
+        thing = int(box.get())
+    try:
+
+        if con_var.get() == 1:    ## c to f
+            result = (thing * 9/5) + 32
+            result_l.config(text = f"{thing} °C is equal to {round(result, 2)} °F")
+        elif con_var.get() == 2:  ## f to c
+            result = (thing - 32) * (5/9)
+            result_l.config(text = f"{thing} °F is equal to {round(result, 2)} °C")
+    except ValueError:
+
+
 
 title = ttk.Label(root, text = "Temperature Converter")
 title.grid(column = 0, row = 0, columnspan = 2, padx = 10, pady = 5)
