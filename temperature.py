@@ -5,7 +5,7 @@ root = tk.Tk()
 con_var = tk.IntVar()
 
 def convert():
-        thing = int(box.get())
+    thing = int(box.get())
     try:
 
         if con_var.get() == 1:    ## c to f
@@ -15,6 +15,7 @@ def convert():
             result = (thing - 32) * (5/9)
             result_l.config(text = f"{thing} °F is equal to {round(result, 2)} °C")
     except ValueError:
+        result_l.config(text = "Invalid input")
 
 
 
