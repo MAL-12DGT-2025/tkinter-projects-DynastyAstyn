@@ -15,7 +15,7 @@ def calcing():
     try:
         result = eval(calc.get())
         equation.set(result)
-    except ValueError:
+    except :
         equation.set("ERROR")
 
 root = tk.Tk()
