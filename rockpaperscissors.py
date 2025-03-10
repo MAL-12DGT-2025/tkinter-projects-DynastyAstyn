@@ -2,25 +2,33 @@ import tkinter as tk
 from tkinter import ttk
 import random
 
-things = ["rock, paper, scissors"]
+things = ["rock", "paper", "scissors"]
+scoring = 0
 
 def choice(thing):
+    global scoring
     comp_choice = random.randrange(0,3)
     if thing != things[comp_choice]:
-        if thing == things[0] and comp_choice == things[2] or thing == things[1] and comp_choice == things[0] or thing == things[2] and comp_choice == things[1]:
-            thingels.congfig(root)
+        if (thing == things[0] and comp_choice == 2) or (thing == things[1] and comp_choice == 0) or (thing == things[2] and comp_choice == 1):
+            thingels.config(text = f"You won, computer picked {things[comp_choice]}")
+            scoring += 1
+            score.config(text = f"Score : {str(scoring)}")
+        else:
+            thingels.config(text = f"You lost, computer picked {things[comp_choice]}")
+    else:
+        thingels.config(text = f"Draw! Select again")
 
 root = tk.Tk()
-root.title("rockokcokco")
+root.title("rockokcokco")   
 
-rps = ttk.Label(root, text = f'Rcok, paptr\nscissor game')
+rps = ttk.Label(root, text = f'Rcok, paptr, scissor game')
 rps.grid(column = 1, row = 0)
 
-instructions = ttk.Label(root, text = 'make your choice')
-instructions.grid (column = 1, row = 1)
+thingels = ttk.Label(root, text = 'make your choice')
+thingels.grid (column = 1, row = 1)
 
-thingels = ttk.Label(root, text = '')
-thingels.grid (column = 1, row = 2)
+score = ttk.Label(root, text = 'Score : 0')
+score.grid (column = 1, row = 2)
 
 rcok = ttk.Button(root, text = 'rcok', command = lambda : choice("rock"))
 rcok.grid(column = 0, row = 3)
