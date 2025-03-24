@@ -6,6 +6,7 @@ from tkinter import ttk
 root = tk.Tk() 
 con_var = tk.IntVar()
 root.title('lemony') 
+ice_var = tk.BooleanVar(value = False) 
 
 ##dictionary for the menu
 thing = {
@@ -46,6 +47,9 @@ def press(thingels):
             thingys_in_the_thing.append("Large")
             price += 0.5
         price = round(price, 2)
+        if ice_var.get():
+             price += 0.5
+             thingys_in_the_thing.append("Ice")
     
 
         print(price)
@@ -69,11 +73,15 @@ cart = ttk.Label(root, text = "Cart: ")
 cart.grid(row = 6, column = 0)
 
 def on_menu_select(event):
-    selected = menu.get()
-    if selected != "Strawberry Lemonade, +$1.50" or selected != "Lemonade, +$1":
-        extra.grid_remove()  # Hide extras box
-    else:
-        extra.grid(row = 3, column = 0)  # Show extras box
+     selected = menu.get()
+     if selected in ["Strawberry Lemonade, +$1.50", "Lemonade, +$1"]:
+         extra.grid(row = 3, column = 0)
+         ice.grid(row = 5 , column = 1)
+     else:
+         extra.grid_remove()
+         extra.set('')
+         ice.grid_remove()
+         ice_var.set(False)
 
 menu = ttk.Combobox(root, width = 25, state = "readonly")
 menu.grid(row = 2 , column = 0)
@@ -116,7 +124,7 @@ button_small.grid(row = 2, column = 1, padx = 5)
 button_large = ttk.Radiobutton(root, text =  "Large +50¢",  variable = con_var, value = 2)
 button_large.grid(row = 3 , column = 1, padx = 5)
 
-ice = ttk.Checkbutton(root, text =  "Ice +50¢")  ##ice checkbox
-ice.grid(row = 5 , column = 1)
+ice = ttk.Checkbutton(root, text =  "Ice +50¢", variable = ice_var)  ##ice checkbox
+ice.grid_remove()
 
 root.mainloop() 
