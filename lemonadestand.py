@@ -57,9 +57,10 @@ def press(thingels):
 
         size = "Large" if con_var.get() == 2 else "Small" if con_var.get() == 1 else ""
         item = menu.get().split(",")[0] if menu.get() else ""
-        extra_item = extra.get().split(",")[0] if extra.get() else ""
+        extra_item = extra.get().split("+")[0] if extra.get() else ""
+        ice_text = " with Ice" if ice_var.get() else ""
         extra_text = f" with {extra_item}" if extra_item else ""
-        cart_text = f"Cart: {size} {item}{extra_text}\nTotal: ${price:.2f}" if size else f"Cart: {item}{extra_text}\nTotal: ${price:.2f}"
+        cart_text = f"Cart: {size} {item}{extra_text}{ice_text}\nTotal: ${price:.2f}"
         cart.config(text=cart_text)
     elif thingels == "remove":
         cart_text = "Cart: \nTotal:"
