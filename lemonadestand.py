@@ -67,6 +67,10 @@ def press(thingels):
         cart.config(text=cart_text)
     elif thingels == "pay":
         cart_text = "Thank you for your purchase!"
+        cart.config(text=cart_text)
+        menu.set('')
+        extra.set('')
+        ice_var.set(False)
 
 ttk.Label(root, text = "Lemonade\nStand :p").grid(row = 0, column = 1) 
 ttk.Label(root, text = "Select an item :").grid(row = 1, column = 0) 
