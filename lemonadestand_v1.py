@@ -38,7 +38,7 @@ def press(thingels):
         try:
             price += float(other_thing[extra.get()])
         except KeyError:
-            pass 
+            pass
 
         if con_var.get() == 1:
             thingys_in_the_thing.append("Small")
