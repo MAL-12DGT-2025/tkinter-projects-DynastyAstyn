@@ -6,7 +6,7 @@ from tkinter import ttk
 root = tk.Tk() 
 con_var = tk.IntVar()
 root.title('lemony') 
-ice_var = tk.BooleanVar(value = False) 
+ 
 
 ##dictionary for the menu
 thing = {
